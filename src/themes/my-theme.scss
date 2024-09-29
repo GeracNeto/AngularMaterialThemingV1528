@@ -1,0 +1,58 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+/////// Custom Theme ///////
+
+// $my-primary: mat.define-palette(mat.$blue-palette, 500);
+// $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// // The "warn" palette is optional and defaults to red if not specified.
+// $my-warn: mat.define-palette(mat.$red-palette);
+
+// $my-theme: mat.define-light-theme((
+//  color: (
+//    primary: $my-primary,
+//    accent: $my-accent,
+//    warn: $my-warn,
+//  ),
+//  typography: mat.define-typography-config(),
+//  density: 0,
+// ));
+
+// // Emit theme-dependent styles for common features used across multiple components.
+// @include mat.core-theme($my-theme);
+
+// // Emit for all componentes
+// @include mat.all-component-themes($my-theme);
+
+/////// Dark and Ligth Theme ///////
+
+// Define a dark theme
+$dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$pink-palette),
+                accent: mat.define-palette(mat.$blue-grey-palette),
+            ),
+            // Only include `typography` and `density` in the default dark theme.
+            typography: mat.define-typography-config(),
+            density: 0,
+        ));
+
+// Define a light theme
+$light-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$indigo-palette),
+                accent: mat.define-palette(mat.$pink-palette),
+            ),
+            // Only include `typography` and `density` in the default dark theme.
+            typography: mat.define-typography-config(),
+            density: 0,
+        ));
+
+// Apply the themes using CSS classes
+.dark-theme {
+    @include mat.core-theme($dark-theme);
+    @include mat.all-component-themes($dark-theme);
+}
+
+.light-theme {
+    @include mat.core-theme($light-theme);
+    @include mat.all-component-themes($light-theme);
+}
